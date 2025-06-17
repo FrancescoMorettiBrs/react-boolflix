@@ -1,4 +1,5 @@
 import { Children, createContext, useEffect, useState } from "react";
+import axios from "axios";
 
 const GlobalContext = createContext();
 
@@ -8,19 +9,19 @@ const GlobalProvider = ({children}) => {
   const [searchTermSubmit, setSearchTermSubmit] = useState("");
 
   const apiKey = import.meta.env.VITE_APP_KEY;
+  
 
   const fetchResult = () => {
-    if (!search.trim()) return;
+    if (!searchTermSubmit.trim()) return;
 
-    const apiMovieUrl = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=it-IT&query=${searchTerm}`;
+    const apiMovieUrl = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&language=it-IT&query=${searchTermSubmit}`;
 
-    const apiTvSeriesUrl = `https://api.themoviedb.org/3/search/tv?api_key=${apiKey}&language=it-IT&query=${searchTerm}`;
+    const apiTvSeriesUrl = `https://api.themoviedb.org/3/search/tv?api_key=${apiKey}&language=it-IT&query=${searchTermSubmit}`;
 
     axios.get(apiMovieUrl).then((movieResp) => {
       const movies = movieResp.data.results.map((item) => ({
         id: item.id,
         title: item.title,
-        originalTitle: item.original_title,
         originalTitle: item.original_title,
         language: item.original_language,
         vote: item.vote_average,

@@ -5,7 +5,7 @@ const SearchBar = () => {
   const { search, setSearch, setSearchTermSubmit } = useContext(GlobalContext);
 
   const handleSubmit = (e) => {
-    e.prevent.default();
+    e.preventDefault();
     setSearchTermSubmit(search);
   };
 
