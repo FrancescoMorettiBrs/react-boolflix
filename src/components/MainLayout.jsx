@@ -1,11 +1,10 @@
 import MovieSeriesList from "./MovieSeriesList";
-import SearchBar from "./SearchBar";
+import AppHeader from "./AppHeader";
 
 const MainLayout = () => {
   return (
-    <div className="container my-5">
-      <h1 className="mb-4">Boolflix</h1>
-      <SearchBar />
+    <div>
+      <AppHeader />
       <MovieSeriesList />
     </div>
   );

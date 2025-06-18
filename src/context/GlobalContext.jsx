@@ -1,14 +1,15 @@
-import { Children, createContext, useEffect, useState } from "react";
+import { children, createContext, useEffect, useState } from "react";
 import axios from "axios";
 
 const GlobalContext = createContext();
 
-const GlobalProvider = ({children}) => {
+const GlobalProvider = ({ children }) => {
   const [search, setSearch] = useState("");
   const [result, setResult] = useState([]);
   const [searchTermSubmit, setSearchTermSubmit] = useState("");
 
-  const apiKey = import.meta.env.VITE_APP_KEY;
+  const apiKey = import.meta.env.VITE_API_KEY;
+  console.log(apiKey);
   
 
   const fetchResult = () => {
@@ -64,4 +65,4 @@ const GlobalProvider = ({children}) => {
   );
 };
 
-export {GlobalContext, GlobalProvider};
+export { GlobalContext, GlobalProvider };
